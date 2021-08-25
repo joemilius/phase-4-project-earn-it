@@ -53,7 +53,7 @@ const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
             <ChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</ChoreDesc>
             <ChoreDesc><FaMoneyBillAlt/> ${child_chore.reward}</ChoreDesc>
             {child_chore.is_completed ? <ChoreDesc>Completed <span onClick={handleComplete}>✅</span></ChoreDesc> : <ChoreDesc>Completed <span onClick={handleComplete}>✖️</span></ChoreDesc>}
-            <DelButton onClick={handleChildChoreDelete}>Remove Chore</DelButton>
+            <DelButton onClick={handleChildChoreDelete}>Unassign Chore from Child</DelButton>
         </ChoreDiv>
     )
 }
