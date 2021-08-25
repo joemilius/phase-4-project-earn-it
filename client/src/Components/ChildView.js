@@ -15,12 +15,12 @@ const MoneyEarned = styled.h2`
     text-align: center;
 `
 
-function ChildView({user}){
-    const [myChores, setMyChores] = useState([])
-
+function ChildView({user,showMoney, setShowMoney, myChores, setMyChores}){
+    
+    const [allChildChores, setAllChildChores] = useState([])
     const [earnedMoney, setEarnedMoney] = useState('')
     const [completed, setCompleted] = useState(false)
-    const [showMoney, setShowMoney] = useState(false)
+    
 
     useEffect(() => {
         fetch(`/child_chores/${user.id}`)
@@ -78,6 +78,8 @@ function ChildView({user}){
                         myChores = {myChores}
                         setMyChores = {setMyChores}
                         setShowMoney= {setShowMoney}
+                        allChildChores={allChildChores} 
+                        setAllChildChores={setAllChildChores}
                     />
                 )
             })}

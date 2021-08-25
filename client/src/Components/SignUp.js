@@ -1,12 +1,18 @@
 import React, { useState } from "react"
+import { FaFileExcel } from "react-icons/fa";
 import styled from 'styled-components'
-import { Title, Subtitle, Wrapper, Input, Label, LoginButton, Button } from './StyledComponentElements'
+import { Title, Subtitle, Wrapper, Input, Label, LoginButton, Button} from './StyledComponentElements'
 
 const Wrapper2 = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
+
+const SignUpForm = styled.form`
+    display: grid;
+    justify-content: center;
+`
 
 function SignUp({ setUser, handleShowLoginClearErrors, setErrors }){
     const [userData, setUserData] = useState({
@@ -47,7 +53,7 @@ function SignUp({ setUser, handleShowLoginClearErrors, setErrors }){
  
     return (
         <Wrapper>
-            <form onSubmit={userSubmit}>
+            <SignUpForm onSubmit={userSubmit}>
                 <Title>Create New User</Title>
                 <Label for='first_name'>First Name:</Label>
                 <Input name='first_name' placeholder='First Name' value={userData.first_name} onChange={handleCreateUser}></Input>
@@ -68,7 +74,7 @@ function SignUp({ setUser, handleShowLoginClearErrors, setErrors }){
                     <LoginButton>Sign Up</LoginButton>
                     <Button onClick={handleShowLoginClearErrors}>Already Have an Account?</Button>
                 </Wrapper2>
-            </form>
+            </SignUpForm>
         </Wrapper>
     )
 }
