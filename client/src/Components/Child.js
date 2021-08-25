@@ -21,7 +21,7 @@ const ChildInfoTitle = styled.h5`
     padding: .5em;
 `
 
-const ChildChoreTitle = styled.h3`
+const ChildChoreTitle = styled.h2`
     text-align: center;
     padding: .5em;
 `
@@ -99,8 +99,8 @@ const Child = ({user, chores, household}) => {
                             <ChildChore key={child_chore.id} child_chore={child_chore} allChildChores={allChildChores} setAllChildChores={setAllChildChores}/>
                             )
                         })}
+                    <ChildChoreTitle>Assign New Chore</ChildChoreTitle>
                     <form onSubmit={onChoreAssign}>
-                        <ChildInfoTitle>Assign Chore</ChildInfoTitle>
                         <select name="chore_id" value={childChore.chore_id}onChange={handleChoreChange}>
                             <option value='' defaultValue>Pick Chore</option>
                             {household.chores ? 

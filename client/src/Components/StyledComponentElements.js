@@ -83,14 +83,18 @@ export const ChoreName = styled.h3`
 
 export const ChoreDesc = styled.p`
     text-align: center;
-    padding: .5em;
+    padding: .1em;
 `
 
 export const ChoreDiv = styled.div`
     padding: .5em;
+    margin: .25em;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: stretch;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
 `
