@@ -1,8 +1,6 @@
-import React from 'react'
 import {ChoreName, ChoreDesc, ChoreDiv, LoginButton} from './StyledComponentElements'
-import styled from 'styled-components'
 
-const ChildChore = ({child_chore, myChores, setMyChores}) => {
+const ChildChore = ({user, child_chore, myChores, setMyChores, setTotalEarnings}) => {
 
     function handleComplete(event){
         event.preventDefault()
@@ -24,6 +22,7 @@ const ChildChore = ({child_chore, myChores, setMyChores}) => {
                   return childChore;
                 }})
                 setMyChores(updatedChildChores)
+                setTotalEarnings(user.total_earnings)
             })
     }
 

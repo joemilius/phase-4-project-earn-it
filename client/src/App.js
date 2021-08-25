@@ -26,11 +26,8 @@ function App() {
       if (resp.ok) {
         resp.json().then((user) => {
           setUser(user)
-
           setIsParent(user.is_parent)
-
           setHousehold(user.household)
-
         });
       }
     });
