@@ -23,47 +23,60 @@ const SingleChoreDiv = styled.div`
 
 function ChildView({user}){
     const [myChores, setMyChores] = useState([])
+    const [earnedMoney, setEarnedMoney] = useState('')
     const [completed, setCompleted] = useState(false)
+    const [showMoney, setShowMoney] = useState(false)
 
 
     useEffect(() => {
         fetch(`/child_chores/${user.id}`)
         .then(response => response.json())
         .then(data => setMyChores(data))
-    }, [])
+    }, [completed])
 
+    function handleFinished(event){
+        event.preventDefault()
+        console.log(event.target.value)
+        setShowMoney(false)
+        setCompleted(!completed)
+        fetch(`child_chores/${event.target.id}`,{
+            method: "PATCH",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                is_completed : event.target.value
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const updatedMyChores = myChores.map((childChore) => {
+                if (childChore.id === data.id) {
+                    return { ...childChore, is_completed: data.is_completed };
+                } else {
+                    return childChore;
+                }})
+                setMyChores(updatedMyChores)
+            })
+        }
 
-
-    // function handleFinished(event){
-    //     event.preventDefault()
-    //     console.log(event.target.value)
-    //     setCompleted(!completed)
-    //     fetch(`child_chores/${event.target.id}`,{
-    //         method: "PATCH",
-    //         headers: {
-    //             "Content-Type" : "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             is_completed : event.target.value
-    //         })
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         const updatedMyChores = myChores.map((childChore) => {
-    //             if (childChore.id === data.id) {
-    //               return { ...childChore, is_completed: data.is_completed };
-    //             } else {
-    //               return childChore;
-    //             }})
-    //             setMyChores(updatedMyChores)
-    //         })
-    // }
+        function getMyMoney(){
+            setShowMoney(!showMoney)
+        fetch(`/me`)
+          .then(response => response.json())
+          .then(data => setEarnedMoney(data.total_earnings))
+        }
+   
     
     return (
         <Wrapper>
-            <MoneyEarned>Money Earned: ${user.total_earnings}</MoneyEarned>
+            <button onClick={getMyMoney}>Money Earned</button>
+            {showMoney &&
+            <MoneyEarned>Money Earned: ${earnedMoney}</MoneyEarned>
+            }
             <HomeSubtitle>Assigned Chores</HomeSubtitle>
             <ChildChoresDiv>
+
             {myChores && myChores.map(child_chore => {
                 return(
                     <ChildChore
