@@ -12,6 +12,7 @@ function App() {
   const [chores, setChores] = useState([])
   const [isParent, setIsParent] = useState('')
   const [household, setHousehold] = useState([])
+
     
   useEffect(() => {
       fetch(`/chores`)

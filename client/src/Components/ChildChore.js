@@ -1,9 +1,11 @@
 import {ChoreName, ChoreDesc, ChoreDiv, LoginButton} from './StyledComponentElements'
 
-const ChildChore = ({user, child_chore, myChores, setMyChores, setTotalEarnings}) => {
+
+const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
 
     function handleComplete(event){
         event.preventDefault()
+        setShowMoney(false)
         fetch(`child_chores/${child_chore.id}`,{
             method: "PATCH",
             headers: {
@@ -22,7 +24,6 @@ const ChildChore = ({user, child_chore, myChores, setMyChores, setTotalEarnings}
                   return childChore;
                 }})
                 setMyChores(updatedChildChores)
-                setTotalEarnings(user.total_earnings)
             })
     }
 
