@@ -34,6 +34,12 @@ export const LoginButton = styled.button`
     border-radius: 15px;
     padding: 10px;
     font-size: 1em;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
 `; 
 
 export const Button = styled.button`
@@ -42,6 +48,12 @@ export const Button = styled.button`
     border-radius: 15px;
     padding: 10px;
     font-size: 1em;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
 `;
 
 export const HomeSubtitle = styled.h2`

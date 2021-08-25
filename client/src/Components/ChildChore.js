@@ -8,6 +8,12 @@ const DelButton = styled.button`
     padding: .5em;
     background: black;
     color: white;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
 `
 
 

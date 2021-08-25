@@ -8,7 +8,13 @@ import { FaPlus, FaMinus } from 'react-icons/fa'
 const ShowInfoButton = styled.button`
     font-size: .75em;
     display: inline-flex;
-    border-radius: 50%
+    border-radius: 50%;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
 `
 
 const ChildDiv = styled.div`
