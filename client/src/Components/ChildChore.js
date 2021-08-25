@@ -2,10 +2,11 @@ import React from 'react'
 import {ChoreName, ChoreDesc, ChoreDiv, LoginButton} from './StyledComponentElements'
 import styled from 'styled-components'
 
-const ChildChore = ({child_chore, myChores, setMyChores}) => {
+const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
 
     function handleComplete(event){
         event.preventDefault()
+        setShowMoney(false)
         fetch(`child_chores/${child_chore.id}`,{
             method: "PATCH",
             headers: {
