@@ -10,6 +10,21 @@ const ShowInfoButton = styled.button`
     margin-right: 1em;
 `
 
+const ChildDiv = styled.div`
+    background: #256ce1;
+    color: white;
+`
+
+const ChildInfoTitle = styled.h5`
+    text-align: center;
+    padding: .5em;
+`
+
+const ChildChoreTitle = styled.h3`
+    text-align: center;
+    padding: .5em;
+`
+
 const Child = ({user, chores, household}) => {
 
     const [showChildInfo, setShowChildInfo] = useState(false)
@@ -75,25 +90,25 @@ const Child = ({user, chores, household}) => {
         <ChildInfoWrapper>
             <h3><span><ShowInfoButton onClick={handleMember}>{showChildInfo ? "-" : "+"}</ShowInfoButton></span>{user.first_name}</h3>
             {showChildInfo && 
-                <>
-                    <h5>{user.username}</h5>
-                    <h5>{user.email}</h5>
+                <ChildDiv>
+                    <ChildInfoTitle>username: {user.username} | email: {user.email}</ChildInfoTitle>
+                    <ChildChoreTitle>Assigned Chores</ChildChoreTitle>
                     {allChildChores && allChildChores.map(child_chore => {
                         return(
                             <ChildChore key={child_chore.id} child_chore={child_chore} allChildChores={allChildChores} setAllChildChores={setAllChildChores}/>
                             )
-                    })}
-                    <h5>Assign Chore</h5>
+                        })}
                     <form onSubmit={onChoreAssign}>
+                        <ChildInfoTitle>Assign Chore</ChildInfoTitle>
                         <select name="chore_id" value={childChore.chore_id}onChange={handleChoreChange}>
                             <option value='' defaultValue>Pick Chore</option>
                             {household.chores ? 
                             household.chores.map((chore, index) => {
                                 return(
-                                <option key={index} value={chore.id}>{chore.chore_name}</option>
-                            )})
-                            :
-                            <option>Make a chore</option>}
+                                    <option key={index} value={chore.id}>{chore.chore_name}</option>
+                                    )})
+                                    :
+                                    <option>Make a chore</option>}
                         </select>
                         <select name="time_to_complete" value={childChore.time_to_complete} onChange={handleChoreChange}>
                             <option value='' defaultValue>How Long?</option>
@@ -115,7 +130,7 @@ const Child = ({user, chores, household}) => {
                     {childChoreErrors.map((err) => (
                         <ChildChoreError key={err}>{err}</ChildChoreError>
                     ))}
-                </>
+                </ChildDiv>
             }
         </ChildInfoWrapper>
     )

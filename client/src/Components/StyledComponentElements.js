@@ -54,6 +54,8 @@ export const ChildInfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
 `
 
 export const ParentTitle = styled.h3`
