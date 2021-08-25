@@ -18,7 +18,7 @@ const HouseholdChore = ({chore, handleDelete, id}) => {
     return (
         <ChoreDiv>
             <ChoreName>{chore.chore_name}</ChoreName>
-            <ChoreDesc>description: {chore.description}</ChoreDesc>
+            <ChoreDesc>{chore.description}</ChoreDesc>
             <ChoreDelButton id={id} onClick={handleDelete}>Delete Chore from Household</ChoreDelButton>
         </ChoreDiv>
     )
