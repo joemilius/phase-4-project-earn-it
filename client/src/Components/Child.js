@@ -3,11 +3,12 @@ import ChildChore from './ChildChore'
 import ChildChoreError from './ChildChoreError'
 import { ChildInfoWrapper } from './StyledComponentElements'
 import styled from 'styled-components'
+import { FaPlus, FaMinus } from 'react-icons/fa'
 
 const ShowInfoButton = styled.button`
-    border-radius: 20px;
-    font-size: 1em;
-    margin-right: 1em;
+    font-size: .75em;
+    display: inline-flex;
+    border-radius: 50%
 `
 
 const ChildDiv = styled.div`
@@ -88,7 +89,7 @@ const Child = ({user, chores, household}) => {
 
     return (
         <ChildInfoWrapper>
-            <h3><span><ShowInfoButton onClick={handleMember}>{showChildInfo ? "-" : "+"}</ShowInfoButton></span>{user.first_name}</h3>
+            <h3>{user.first_name} <span><ShowInfoButton onClick={handleMember}>{showChildInfo ? <FaMinus/> : <FaPlus/>}</ShowInfoButton></span></h3>
             {showChildInfo && 
                 <ChildDiv>
                     <ChildInfoTitle>username: {user.username} | email: {user.email}</ChildInfoTitle>
