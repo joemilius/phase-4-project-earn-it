@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Input = styled.input`
-    width: 100%;
+    width: 300px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -56,12 +56,39 @@ export const ChildInfoWrapper = styled.div`
     align-items: center;
     padding-top: 1em;
     padding-bottom: 1em;
+    border-radius: 15px;
 `
 
 export const ParentTitle = styled.h3`
     text-align: center;
 `
+export const FormWrapper = styled.form`
+    display: flex;
+    justify-content: center;  
+`
 
+export const StyledSelect = styled.select`
+    max-width: 50%;
+    height: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-width: medium;
+    border-color: black;
+    border-radius: 15px;
+`
+export const StyledOption = styled.option`
+    text-align: center;
+
+`
+export const StyledButton = styled.button`
+    margin-bottom: 1rem;
+    border-width: medium;
+    border-color: black;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+`
 export const ChildDiv = styled.div` 
 
 `

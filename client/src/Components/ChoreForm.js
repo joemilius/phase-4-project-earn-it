@@ -11,6 +11,10 @@ const HouseholdChoresDiv = styled.div`
     grid-template-columns: repeat(auto-fill, 15rem) 20%; 
     grid-gap: 20px; 
 `
+const StyledChoreForm = styled.form`
+    display: grid;
+    justify-content: center;
+`
 
 function ChoreForm({user, setChores, chores}){
     const [choreErrors, setChoreErrors] = useState([])
@@ -58,7 +62,7 @@ function ChoreForm({user, setChores, chores}){
         <Wrapper>
             <div>
                 <HomeSubtitle>Add Chore to the {user.household.last_name} Household</HomeSubtitle>
-                <form onSubmit={handleChoreSubmit}>
+                <StyledChoreForm onSubmit={handleChoreSubmit}>
                     <Input name="chore_name" value={choreData.chore_name} placeholder='chore' onChange={handleChoreCreate}></Input>
                     <Input name="description" value={choreData.description} placeholder='description' onChange={handleChoreCreate}></Input>
                     <select name="min_age" onChange={handleChoreCreate}>
@@ -78,7 +82,7 @@ function ChoreForm({user, setChores, chores}){
                         <option value={18}>18</option>
                     </select>
                 <Button>Create New Chore</Button>
-                </form>
+                </StyledChoreForm>
                 {choreErrors.map((err) => (
                     <ChoreError key={err}>{err}</ChoreError>
                 ))}

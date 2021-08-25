@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ChildChore from './ChildChore'
 import ChildChoreError from './ChildChoreError'
-import { ChildInfoWrapper } from './StyledComponentElements'
+import { ChildInfoWrapper, FormWrapper, StyledSelect, StyledOption, StyledButton } from './StyledComponentElements'
 import styled from 'styled-components'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 
@@ -14,6 +14,8 @@ const ShowInfoButton = styled.button`
 const ChildDiv = styled.div`
     background: #256ce1;
     color: white;
+    border-radius: 15px;
+    padding: 10px
 `
 
 const ChildInfoTitle = styled.h5`
@@ -26,7 +28,7 @@ const ChildChoreTitle = styled.h2`
     padding: .5em;
 `
 
-const Child = ({user, chores, household}) => {
+const Child = ({user, chores, household, showMoney, setShowMoney, myChores, setMyChores}) => {
 
     const [showChildInfo, setShowChildInfo] = useState(false)
     const [allChildChores, setAllChildChores] = useState([])
@@ -96,38 +98,46 @@ const Child = ({user, chores, household}) => {
                     <ChildChoreTitle>Assigned Chores</ChildChoreTitle>
                     {allChildChores && allChildChores.map(child_chore => {
                         return(
-                            <ChildChore key={child_chore.id} child_chore={child_chore} allChildChores={allChildChores} setAllChildChores={setAllChildChores}/>
+                            <ChildChore 
+                                key={child_chore.id} 
+                                child_chore={child_chore} 
+                                allChildChores={allChildChores} 
+                                setAllChildChores={setAllChildChores} 
+                                showMoney={showMoney} 
+                                setShowMoney={setShowMoney} 
+                                myChores={myChores} 
+                                setMyChores={setMyChores}/>
                             )
                         })}
                     <ChildChoreTitle>Assign New Chore</ChildChoreTitle>
-                    <form onSubmit={onChoreAssign}>
-                        <select name="chore_id" value={childChore.chore_id}onChange={handleChoreChange}>
-                            <option value='' defaultValue>Pick Chore</option>
+                    <FormWrapper onSubmit={onChoreAssign}>
+                        <StyledSelect name="chore_id" value={childChore.chore_id}onChange={handleChoreChange}>
+                            <StyledOption value='' defaultValue>Pick Chore</StyledOption>
                             {household.chores ? 
                             household.chores.map((chore, index) => {
                                 return(
-                                    <option key={index} value={chore.id}>{chore.chore_name}</option>
+                                    <StyledOption key={index} value={chore.id}>{chore.chore_name}</StyledOption>
                                     )})
                                     :
                                     <option>Make a chore</option>}
-                        </select>
-                        <select name="time_to_complete" value={childChore.time_to_complete} onChange={handleChoreChange}>
-                            <option value='' defaultValue>How Long?</option>
-                            <option value='15'>15 minutes</option>
-                            <option value='30'>30 minutes</option>
-                            <option value='45'>45 minutes</option>
-                            <option value='60'>60 minutes</option>
-                        </select>
-                        <select name="reward" value={childChore.reward}onChange={handleChoreChange}>
-                            <option value='' defaultValue>Reward</option>
-                            <option value='1'>$1</option>
-                            <option value='5'>$5</option>
-                            <option value='10'>$10</option>
-                            <option value='15'>$15</option>
-                            <option value='20'>$20</option>
-                        </select>
-                        <button>Assign</button>
-                    </form>
+                        </StyledSelect>
+                        <StyledSelect name="time_to_complete" value={childChore.time_to_complete} onChange={handleChoreChange}>
+                            <StyledOption value='' defaultValue>How Long?</StyledOption>
+                            <StyledOption value='15'>15 minutes</StyledOption>
+                            <StyledOption value='30'>30 minutes</StyledOption>
+                            <StyledOption value='45'>45 minutes</StyledOption>
+                            <StyledOption value='60'>60 minutes</StyledOption>
+                        </StyledSelect>
+                        <StyledSelect name="reward" value={childChore.reward}onChange={handleChoreChange}>
+                            <StyledOption value='' defaultValue>Reward</StyledOption>
+                            <StyledOption value='1'>$1</StyledOption>
+                            <StyledOption value='5'>$5</StyledOption>
+                            <StyledOption value='10'>$10</StyledOption>
+                            <StyledOption value='15'>$15</StyledOption>
+                            <StyledOption value='20'>$20</StyledOption>
+                        </StyledSelect>
+                        <StyledButton>Assign</StyledButton>
+                    </FormWrapper>
                     {childChoreErrors.map((err) => (
                         <ChildChoreError key={err}>{err}</ChildChoreError>
                     ))}

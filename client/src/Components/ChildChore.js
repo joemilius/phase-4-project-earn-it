@@ -11,7 +11,7 @@ const DelButton = styled.button`
 `
 
 
-const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
+const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildChores, setAllChildChores}) => {
 
     function handleComplete(event){
         event.preventDefault()
@@ -32,8 +32,18 @@ const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
                   return { ...childChore, is_completed: data.is_completed };
                 } else {
                   return childChore;
-                }})
+                }
+            })
+
+            const updatedAllChildChores = allChildChores.map((childChore) => {
+                if (childChore.id === data.id) {
+                    return { ...childChore, is_completed: data.is_completed };
+                  } else {
+                    return childChore;
+                  }
+            })
                 setMyChores(updatedChildChores)
+                setAllChildChores(updatedAllChildChores)
             })
     }
 
@@ -43,7 +53,9 @@ const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
             method: "DELETE"
         })
         const updatedChildChores = myChores.filter((childChore) => childChore.id !== child_chore.id);
+        const updatedAllChildChores = allChildChores.filter((childChore) => childChore.id !== child_chore.id);
         setMyChores(updatedChildChores)
+        setAllChildChores(updatedAllChildChores)
     }
 
     return (
