@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ChildChoreError = (children) => {
+const ChildChoreError = ({children}) => {
     return (
         <div>
             <p>{children}</p>

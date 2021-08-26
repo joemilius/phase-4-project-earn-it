@@ -1,11 +1,21 @@
 import React from 'react'
-import { ParentTitle } from './StyledComponentElements'
+import { ParentTitle, DelButton, LoginButton, UserInfoWrapper } from './StyledComponentElements'
 
-const Parent = ({user}) => {
+const Parent = ({user, chores, setChores}) => {
+
+    function handleRemove(){
+        fetch(`/users/${user.id}`, {
+            method: "DELETE"
+        })
+        const newChores = chores.map(chore => chore)
+        setChores(newChores)
+    }
+
     return (
-        <div>
+        <UserInfoWrapper>
             <ParentTitle>{user.first_name} - {user.username}</ParentTitle>
-        </div>
+            <LoginButton onClick={handleRemove}>Remove Member</LoginButton>
+        </UserInfoWrapper>
     )
 }
 

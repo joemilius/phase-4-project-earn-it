@@ -34,12 +34,12 @@ export const LoginButton = styled.button`
     border-radius: 15px;
     padding: 10px;
     font-size: 1em;
-
     &:hover {
         transition: all 0.2s ease-in-out;
         background: #fff;
         color: #010606;
         cursor: pointer;
+    }
 `; 
 
 export const Button = styled.button`
@@ -48,12 +48,12 @@ export const Button = styled.button`
     border-radius: 15px;
     padding: 10px;
     font-size: 1em;
-
     &:hover {
         transition: all 0.2s ease-in-out;
         background: #fff;
         color: #010606;
         cursor: pointer;
+    }
 `;
 
 export const HomeSubtitle = styled.h2`
@@ -62,7 +62,7 @@ export const HomeSubtitle = styled.h2`
     padding: 20px;
 `
 
-export const ChildInfoWrapper = styled.div`
+export const UserInfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,9 +74,28 @@ export const ChildInfoWrapper = styled.div`
 export const ParentTitle = styled.h3`
     text-align: center;
 `
+
+export const StyledButton = styled.button`
+    &:hover{
+        transition: all 0.2s ease-in-out;
+        background: #f2f2f2;
+        color: black;
+    }
+    background: black;
+    color: #f2f2f2;
+    margin-bottom: 1rem;
+    border-width: medium;
+    border-color: black;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+`
+
 export const FormWrapper = styled.form`
     display: flex;
-    justify-content: center;  
+    justify-content: center;
+
+    
 `
 
 export const StyledSelect = styled.select`
@@ -87,22 +106,20 @@ export const StyledSelect = styled.select`
     text-align: center;
     border-width: medium;
     border-color: black;
-    border-radius: 15px;
+    border-radius: 10px;
+        option {
+            color: black;
+            background: white;
+        }
 `
 export const StyledOption = styled.option`
     text-align: center;
+    background: #f2f2f2;
 
 `
-export const StyledButton = styled.button`
-    margin-bottom: 1rem;
-    border-width: medium;
-    border-color: black;
-    border-radius: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-`
+
 export const ChildDiv = styled.div` 
-
+    
 `
 export const ParentDiv = styled.div`
 
@@ -132,8 +149,25 @@ export const ChoreDiv = styled.div`
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center;
     border-style: solid;
     border-color: black;
     border-radius: 20px;
+    background: #256ce1;
+    color: #f2f2f2;
+`
+
+export const DelButton = styled.button`
+    text-align: center;
+    border-radius: 20px;
+    padding: .5em;
+    background: black;
+    color: white;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
+    }
 `

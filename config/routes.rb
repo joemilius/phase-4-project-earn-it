@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :chores, only: [:index, :create, :destroy]
   resources :child_chores, only: [:show, :create, :update, :destroy]
   resources :households
-  resources :users
+  resources :users, only: [:destroy]
   post "/login", to: "sessions#create"
   post "/signup", to: "users#create"
   delete "/logout", to: "sessions#destroy"
