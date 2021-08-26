@@ -100,8 +100,8 @@ const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildC
     return (
         <ChoreDiv>
             <TopRow>
-                <ChoreName>{child_chore.chore.chore_name} </ChoreName>
-                <ChoreDesc> - {child_chore.chore.description}</ChoreDesc>
+                <ChoreName>{child_chore.chore.chore_name}</ChoreName>
+                <ChoreDesc>{child_chore.chore.description}</ChoreDesc>
             </TopRow>
             <BottomRow>
                 <BottomChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</BottomChoreDesc>
