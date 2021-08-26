@@ -14,13 +14,28 @@ const ChoreDelButton = styled.button`
     }
 `
 
+const HouseholdChoreDiv = styled.div`
+    white-space: pre-line;
+    width: 100%;
+    padding: .5em;
+    margin: .25em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    background: #256ce1;
+    color: #f2f2f2;
+`
+
 const HouseholdChore = ({chore, handleDelete, id}) => {    
     return (
-        <ChoreDiv>
+        <HouseholdChoreDiv>
             <ChoreName>{chore.chore_name}</ChoreName>
             <ChoreDesc>{chore.description}</ChoreDesc>
             <ChoreDelButton id={id} onClick={handleDelete}>Delete Chore from Household</ChoreDelButton>
-        </ChoreDiv>
+        </HouseholdChoreDiv>
     )
 }
 

@@ -18,13 +18,6 @@ const ShowInfoButton = styled.button`
     }
 `
 
-const ChildDiv = styled.div`
-    background: #256ce1;
-    color: white;
-    border-radius: 15px;
-    padding: 10px
-`
-
 const ChildInfoTitle = styled.h5`
     text-align: center;
     padding: .5em;
