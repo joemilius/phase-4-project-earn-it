@@ -53,7 +53,7 @@ function App() {
   return (
     <Router>
       <Navbar user={user} isParent={isParent} handleLogOut={handleLogOut} />
-      { !user && isLoading === false
+      { !user //&& isLoading === false
       ? 
       <LoginPage setUser = {setUser} setIsParent={setIsParent} setErrors={setErrors} errors = {errors}/>
       :
