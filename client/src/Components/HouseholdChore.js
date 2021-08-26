@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {ChoreName, ChoreDesc, ChoreDiv} from './StyledComponentElements'
+import {ChoreName, ChoreDesc, HouseholdChoreDiv} from './StyledComponentElements'
 
 const ChoreDelButton = styled.button`
     text-align: center;
@@ -12,21 +12,6 @@ const ChoreDelButton = styled.button`
         color: #010606;
         cursor: pointer;
     }
-`
-
-const HouseholdChoreDiv = styled.div`
-    white-space: pre-line;
-    width: 100%;
-    padding: .5em;
-    margin: .25em;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    border-style: solid;
-    border-color: black;
-    border-radius: 20px;
-    background: #256ce1;
-    color: #f2f2f2;
 `
 
 const HouseholdChore = ({chore, handleDelete, id}) => {    

@@ -171,3 +171,19 @@ export const DelButton = styled.button`
         cursor: pointer;
     }
 `
+
+export const HouseholdChoreDiv = styled.div`
+    white-space: pre-line;
+    width: 100%;
+    padding: .5em;
+    margin: .25em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    background: #256ce1;
+    color: #f2f2f2;
+`

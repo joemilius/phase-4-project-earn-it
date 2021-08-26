@@ -15,7 +15,7 @@ const MoneyEarned = styled.h2`
     text-align: center;
 `
 
-function ChildView({user,showMoney, setShowMoney, myChores, setMyChores}){
+function ChildView({ user, showMoney, setShowMoney, myChores, setMyChores}){
     
     const [allChildChores, setAllChildChores] = useState([])
     const [earnedMoney, setEarnedMoney] = useState('')
@@ -80,6 +80,7 @@ function ChildView({user,showMoney, setShowMoney, myChores, setMyChores}){
                         setShowMoney= {setShowMoney}
                         allChildChores={allChildChores} 
                         setAllChildChores={setAllChildChores}
+                        user = {user}
                     />
                 )
             })}
