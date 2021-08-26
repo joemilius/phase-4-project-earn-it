@@ -36,6 +36,8 @@ const ChildChoreTitle = styled.h2`
 `
 const ChildInfo = styled.div`
     background: #256ce1;
+    padding: 1em;
+    max-width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
