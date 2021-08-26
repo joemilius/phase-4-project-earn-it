@@ -4,7 +4,7 @@ import Child from './Child'
 import { HomeSubtitle, Wrapper, ParentChildDiv, ParentDiv, ChildDiv } from './StyledComponentElements'
 
 
-function ParentView({user, chores, setChores, household, showMoney, setShowMoney, myChores, setMyChores}){
+function ParentView({user, chores, setChores, household, showMoney, setShowMoney, myChores, setMyChores, handleLogOut}){
     function deleteUser(){
         fetch()
     }
@@ -23,6 +23,7 @@ function ParentView({user, chores, setChores, household, showMoney, setShowMoney
                                     household = {household}
                                     chores = {chores}
                                     setChores={setChores}
+                                    handleLogOut={handleLogOut}
                                 />
                             )
                         }})}

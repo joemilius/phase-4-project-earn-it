@@ -50,7 +50,7 @@ function App() {
       :
       <>
       <Switch>
-        <Route path="/" exact component={() => <Home user={user} chores={chores} setChores={setChores} household={household}/>} /> 
+        <Route path="/" exact component={() => <Home user={user} chores={chores} setChores={setChores} household={household} handleLogOut={handleLogOut}/>} /> 
       </Switch>
       <Switch>
         <Route path="/new-chore" exact component={() => <ChoreForm user={user} chores={chores} setChores={setChores}/>} />

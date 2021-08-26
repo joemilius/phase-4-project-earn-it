@@ -3,7 +3,7 @@ import ParentView from './ParentView'
 import ChildView from './ChildView'
 import { Title, HomeSubtitle, Wrapper } from './StyledComponentElements'
 
-function Home({user, chores, setChores, household}){
+function Home({user, chores, setChores, household, handleLogOut}){
     const [showMoney, setShowMoney] = useState(false)
     const [myChores, setMyChores] = useState([])
     
@@ -20,7 +20,9 @@ function Home({user, chores, setChores, household}){
                 showMoney={showMoney} 
                 setShowMoney={setShowMoney} 
                 myChores={myChores} 
-                setMyChores={setMyChores}/>
+                setMyChores={setMyChores}
+                handleLogOut={handleLogOut}
+                />
             : <ChildView 
                 user={user} 
                 showMoney={showMoney} 
