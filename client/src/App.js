@@ -12,6 +12,7 @@ function App() {
   const [chores, setChores] = useState([])
   const [isParent, setIsParent] = useState('')
   const [household, setHousehold] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
     
   useEffect(() => {
       fetch(`/chores`)
@@ -22,15 +23,17 @@ function App() {
   },[])
   
   useEffect(() => {
+    // setIsLoading(true)
     fetch("/me").then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => {
+          // setIsLoading(false)
           setUser(user)
           setIsParent(user.is_parent)
           setHousehold(user.household)
         });
       }
-    });
+    })
   }, [chores]);
 
   function handleLogOut() {
@@ -41,10 +44,16 @@ function App() {
     })
   }
 
+  // if (isLoading === true) {
+  //     return (
+  //       <h1>Loading</h1>
+  //       )
+  // }
+
   return (
     <Router>
       <Navbar user={user} isParent={isParent} handleLogOut={handleLogOut} />
-      { !user 
+      { !user && isLoading === false
       ? 
       <LoginPage setUser = {setUser} setIsParent={setIsParent} setErrors={setErrors} errors = {errors}/>
       :
