@@ -4,7 +4,11 @@ import Child from './Child'
 import { HomeSubtitle, Wrapper, ParentChildDiv, ParentDiv, ChildDiv } from './StyledComponentElements'
 
 
-function ParentView({user, chores, household, showMoney, setShowMoney, myChores, setMyChores}){    
+function ParentView({user, chores, setChores, household, showMoney, setShowMoney, myChores, setMyChores}){
+    function deleteUser(){
+        fetch()
+    }
+    
     return (
         <Wrapper>
             <ParentChildDiv>
@@ -17,26 +21,29 @@ function ParentView({user, chores, household, showMoney, setShowMoney, myChores,
                                     key = {user.id}
                                     user = {user}
                                     household = {household}
+                                    chores = {chores}
+                                    setChores={setChores}
                                 />
                             )
                         }})}
                 </ParentDiv>
                 <ChildDiv>
                     <HomeSubtitle>Household Children</HomeSubtitle>
-                    {user.household.users.map(user => {
-                        if (user.is_parent === false) {
-                            return (
-                                <Child 
-                                    key={user.id} 
-                                    user={user} 
-                                    chores={chores}
-                                    household = {household}
-                                    showMoney={showMoney} 
-                                    setShowMoney={setShowMoney}
-                                    myChores={myChores} 
-                                    setMyChores={setMyChores}
-                                />
-                            )
+                        {user.household.users.map(user => {
+                            if (user.is_parent === false) {
+                                return (
+                                    <Child 
+                                        key={user.id} 
+                                        user={user} 
+                                        chores={chores}
+                                        setChores={setChores}
+                                        household = {household}
+                                        showMoney={showMoney} 
+                                        setShowMoney={setShowMoney}
+                                        myChores={myChores} 
+                                        setMyChores={setMyChores}
+                                    />
+                                )
                         }})}
                 </ChildDiv>
             </ParentChildDiv>

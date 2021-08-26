@@ -12,7 +12,6 @@ function App() {
   const [chores, setChores] = useState([])
   const [isParent, setIsParent] = useState('')
   const [household, setHousehold] = useState([])
-
     
   useEffect(() => {
       fetch(`/chores`)
@@ -51,7 +50,7 @@ function App() {
       :
       <>
       <Switch>
-        <Route path="/" exact component={() => <Home user={user} chores={chores} household={household}/>} /> 
+        <Route path="/" exact component={() => <Home user={user} chores={chores} setChores={setChores} household={household}/>} /> 
       </Switch>
       <Switch>
         <Route path="/new-chore" exact component={() => <ChoreForm user={user} chores={chores} setChores={setChores}/>} />

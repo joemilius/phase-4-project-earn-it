@@ -23,6 +23,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        head :no_content
+    end
+
     private
 
     def create_or_find_household

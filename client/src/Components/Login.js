@@ -37,9 +37,9 @@ const Login = ({ setErrors, setUser, handleShowLoginClearErrors, setIsParent }) 
         <Wrapper>
             <form onSubmit={loginSubmit}>
                 <Title>Login</Title>
-                <Label for='username'>Username:</Label>
+                <Label htmlFor='username'>Username:</Label>
                 <Input name='username' value={loginData.username} placeholder="Username" onChange={handleLogin}></Input>
-                <Label for='password'>Password:</Label>
+                <Label htmlFor='password'>Password:</Label>
                 <Input name='password' value={loginData.password} placeholder="Password" type="password" onChange={handleLogin}></Input>
                 <LoginButton>Login</LoginButton>
                 <Button onClick={handleShowLoginClearErrors}>Create New Account</Button>
