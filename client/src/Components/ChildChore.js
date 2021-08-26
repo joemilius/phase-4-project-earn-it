@@ -1,17 +1,8 @@
-import {ChoreName, ChoreDesc, ChoreDiv, DelButton } from './StyledComponentElements'
+import {ChoreName, ChoreDesc, ChoreDiv } from './StyledComponentElements'
 import { FaClock, FaMoneyBillAlt, FaRegCircle, FaCheckCircle } from 'react-icons/fa'
 import styled from 'styled-components'
 
-// const DelButton = styled.button`
-//     text-align: center;
-//     border-radius: 20px;
-//     padding: .5em;
-//     &:hover{
-//         transition: all 0.2s ease-in-out;
-//         background: black;
-//         color: #f2f2f2;
-//     }
-// `
+
 const CompletedButton = styled.button`
         width: 150px;
         border-radius: 20px;
@@ -21,6 +12,20 @@ const CompletedButton = styled.button`
         background: black;
         color: #f2f2f2;
     }
+`
+
+const DelButton = styled.button`
+    text-align: center;
+    border-radius: 20px;
+    padding: .5em;
+    background: black;
+    color: white;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
 `
 
 const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildChores, setAllChildChores}) => {

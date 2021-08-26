@@ -34,10 +34,11 @@ export const LoginButton = styled.button`
     border-radius: 15px;
     padding: 10px;
     font-size: 1em;
-    &:hover{
+    &:hover {
         transition: all 0.2s ease-in-out;
-        background: #256ce1;
-        color: #f2f2f2;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
     }
 `; 
 
@@ -47,10 +48,11 @@ export const Button = styled.button`
     border-radius: 15px;
     padding: 10px;
     font-size: 1em;
-    &:hover{
+    &:hover {
         transition: all 0.2s ease-in-out;
-        background: #256ce1;
-        color: #f2f2f2;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
     }
 `;
 
