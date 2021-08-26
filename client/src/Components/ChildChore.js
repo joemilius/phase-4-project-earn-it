@@ -4,13 +4,16 @@ import styled from 'styled-components'
 
 
 const CompletedButton = styled.button`
-        width: 150px;
-        border-radius: 20px;
-        padding: .5em;
-        &:hover{
+    background: black;
+    color: white;
+    width: 150px;
+    border-radius: 20px;
+    padding: .5em;
+    &:hover{
         transition: all 0.2s ease-in-out;
-        background: black;
-        color: #f2f2f2;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
     }
 `
 
@@ -26,6 +29,7 @@ const DelButton = styled.button`
         background: #fff;
         color: #010606;
         cursor: pointer;
+    }
 `
 
 const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildChores, setAllChildChores}) => {

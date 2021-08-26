@@ -15,6 +15,7 @@ const ShowInfoButton = styled.button`
         background: #fff;
         color: #010606;
         cursor: pointer;
+    }
 `
 
 const ChildDiv = styled.div`

@@ -78,10 +78,11 @@ export const ParentTitle = styled.h3`
 export const StyledButton = styled.button`
     &:hover{
         transition: all 0.2s ease-in-out;
-        background: black;
-        color: #f2f2f2;
+        background: #f2f2f2;
+        color: black;
     }
-    background: #f2f2f2;
+    background: black;
+    color: #f2f2f2;
     margin-bottom: 1rem;
     border-width: medium;
     border-color: black;
@@ -160,9 +161,13 @@ export const DelButton = styled.button`
     text-align: center;
     border-radius: 20px;
     padding: .5em;
-    &:hover{
+    background: black;
+    color: white;
+
+    &:hover {
         transition: all 0.2s ease-in-out;
-        background: black;
-        color: #f2f2f2;
+        background: #fff;
+        color: #010606;
+        cursor: pointer;
     }
 `

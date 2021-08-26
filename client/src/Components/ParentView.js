@@ -19,7 +19,7 @@ function ParentView({user, chores, setChores, household, showMoney, setShowMoney
                             return (
                                 <Parent 
                                     key = {user.id}
-                                    user = {user}
+                                    user={user}
                                     household = {household}
                                     chores = {chores}
                                     setChores={setChores}

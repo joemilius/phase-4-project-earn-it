@@ -1,5 +1,5 @@
 import React from 'react'
-import { ParentTitle, DelButton, UserInfowrapper, UserInfoWrapper } from './StyledComponentElements'
+import { ParentTitle, DelButton, LoginButton, UserInfoWrapper } from './StyledComponentElements'
 
 const Parent = ({user, chores, setChores}) => {
 
@@ -14,7 +14,7 @@ const Parent = ({user, chores, setChores}) => {
     return (
         <UserInfoWrapper>
             <ParentTitle>{user.first_name} - {user.username}</ParentTitle>
-            <DelButton onClick={handleRemove}>Remove Member</DelButton>
+            <LoginButton onClick={handleRemove}>Remove Member</LoginButton>
         </UserInfoWrapper>
     )
 }
