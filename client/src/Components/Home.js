@@ -10,7 +10,7 @@ function Home({user, chores, setChores, household, handleLogOut}){
     return (
         <Wrapper>
             <Title>Hi {user.first_name}</Title>
-            <HomeSubtitle>You are a {user.is_parent ? "Parent" : "Child"} in the {user.household.last_name} household!</HomeSubtitle>
+            <HomeSubtitle>You are a {user.is_parent ? "Parent" : "Child"} in the {household.last_name} household!</HomeSubtitle>
             {user.is_parent 
             ? <ParentView 
                 user={user} 

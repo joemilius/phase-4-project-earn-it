@@ -9,6 +9,7 @@ const CompletedButton = styled.button`
     width: 150px;
     border-radius: 20px;
     padding: .5em;
+    float: right;
     &:hover{
         transition: all 0.2s ease-in-out;
         background: #fff;
@@ -23,6 +24,7 @@ const DelButton = styled.button`
     padding: .5em;
     background: black;
     color: white;
+    float: right;
 
     &:hover {
         transition: all 0.2s ease-in-out;
@@ -30,6 +32,22 @@ const DelButton = styled.button`
         color: #010606;
         cursor: pointer;
     }
+`
+
+const TopRow = styled.div`
+    display: flex; 
+    flex-direction: row;
+`
+
+const BottomRow = styled.div`
+    display: block;
+    float: right;
+`
+
+export const BottomChoreDesc = styled.p`
+    text-align: right;
+    padding: .1em;
+    display: block;
 `
 
 const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildChores, setAllChildChores}) => {
@@ -81,12 +99,16 @@ const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildC
 
     return (
         <ChoreDiv>
-            <ChoreName>{child_chore.chore.chore_name}</ChoreName>
-            <ChoreDesc>{child_chore.chore.description}</ChoreDesc><br/>
-            <ChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</ChoreDesc>
-            <ChoreDesc><FaMoneyBillAlt/> ${child_chore.reward}</ChoreDesc>
-            {child_chore.is_completed ? <CompletedButton onClick={handleComplete}>Completed <FaCheckCircle/></CompletedButton> : <CompletedButton onClick={handleComplete}>Completed? <FaRegCircle/></CompletedButton>}
-            <DelButton onClick={handleChildChoreDelete}>Unassign Chore from Child</DelButton>
+            <TopRow>
+                <ChoreName>{child_chore.chore.chore_name} </ChoreName>
+                <ChoreDesc> - {child_chore.chore.description}</ChoreDesc>
+            </TopRow>
+            <BottomRow>
+                <BottomChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</BottomChoreDesc>
+                <BottomChoreDesc><FaMoneyBillAlt/> ${child_chore.reward}</BottomChoreDesc>
+                {child_chore.is_completed ? <CompletedButton onClick={handleComplete}>Completed <FaCheckCircle/></CompletedButton> : <CompletedButton onClick={handleComplete}>Completed? <FaRegCircle/></CompletedButton>}
+                <DelButton onClick={handleChildChoreDelete}>Unassign Chore from Child</DelButton>
+            </BottomRow>
         </ChoreDiv>
     )
 }

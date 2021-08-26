@@ -16,7 +16,7 @@ const StyledChoreForm = styled.form`
     justify-content: center;
 `
 
-function ChoreForm({user, setChores, chores}){
+function ChoreForm({user, setChores, chores, toggleUpdateChore, updateChore}){
     const [choreErrors, setChoreErrors] = useState([])
     const [choreData, setChoreData] = useState({
         chore_name:"",
@@ -47,6 +47,7 @@ function ChoreForm({user, setChores, chores}){
                 response.json().then((err) => setChoreErrors(err.errors));
             }
         })
+        toggleUpdateChore(!updateChore)
     }
 
     function handleDelete(e) {

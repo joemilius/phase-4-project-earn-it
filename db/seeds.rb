@@ -21,7 +21,7 @@ puts "Seeding Users..."
         first_name: Faker::Name.first_name,
         email: Faker::Internet.email,
         username: Faker::Internet.username,
-        password: Faker::Internet.password,
+        password: "12345678",
         is_parent: Faker::Boolean.boolean,
         household_id: Household.ids.sample
     )

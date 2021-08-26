@@ -140,16 +140,16 @@ export const ChoreName = styled.h3`
 export const ChoreDesc = styled.p`
     text-align: center;
     padding: .1em;
+    display: block;
 `
 
 export const ChoreDiv = styled.div`
+    white-space: pre-line;
+    width: 100%;
     padding: .5em;
     margin: .25em;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, auto); 
     border-style: solid;
     border-color: black;
     border-radius: 20px;

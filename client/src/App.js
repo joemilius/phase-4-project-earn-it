@@ -13,21 +13,14 @@ function App() {
   const [isParent, setIsParent] = useState('')
   const [household, setHousehold] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-    
+  const [updateChore, toggleUpdateChore] = useState(false)
+      
   useEffect(() => {
-      fetch(`/chores`)
-      .then(response => response.json())
-      .then(data => {
-          setChores(data)
-      })
-  },[])
-  
-  useEffect(() => {
-    // setIsLoading(true)
     fetch("/me").then((resp) => {
       if (resp.ok) {
+        setIsLoading(true)
         resp.json().then((user) => {
-          // setIsLoading(false)
+          setIsLoading(false)
           setUser(user)
           setIsParent(user.is_parent)
           setHousehold(user.household)
@@ -44,16 +37,16 @@ function App() {
     })
   }
 
-  // if (isLoading === true) {
-  //     return (
-  //       <h1>Loading</h1>
-  //       )
-  // }
+  if (isLoading === true) {
+      return (
+        <h1>Loading</h1>
+        )
+  }
 
   return (
     <Router>
       <Navbar user={user} isParent={isParent} handleLogOut={handleLogOut} />
-      { !user //&& isLoading === false
+      { !user && isLoading === false
       ? 
       <LoginPage setUser = {setUser} setIsParent={setIsParent} setErrors={setErrors} errors = {errors}/>
       :
@@ -62,7 +55,7 @@ function App() {
         <Route path="/" exact component={() => <Home user={user} chores={chores} setChores={setChores} household={household} handleLogOut={handleLogOut}/>} /> 
       </Switch>
       <Switch>
-        <Route path="/new-chore" exact component={() => <ChoreForm user={user} chores={chores} setChores={setChores}/>} />
+        <Route path="/new-chore" exact component={() => <ChoreForm user={user} chores={chores} setChores={setChores} toggleUpdateChore={toggleUpdateChore} updateChore={updateChore}/>} />
       </Switch>
       <Switch>
         <Route path="/signup" exact component={() => <SignUp setUser = {setUser} setErrors = {setErrors}/>} />
