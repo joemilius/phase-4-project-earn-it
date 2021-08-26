@@ -3,7 +3,7 @@ import ParentView from './ParentView'
 import ChildView from './ChildView'
 import { Title, HomeSubtitle, Wrapper } from './StyledComponentElements'
 
-function Home({user, chores, setChores, household, handleLogOut}){
+function Home({user, updateChore, toggleUpdateChore, household, handleLogOut}){
     const [showMoney, setShowMoney] = useState(false)
     const [myChores, setMyChores] = useState([])
     
@@ -14,8 +14,8 @@ function Home({user, chores, setChores, household, handleLogOut}){
             {user.is_parent 
             ? <ParentView 
                 user={user} 
-                chores={chores}
-                setChores={setChores} 
+                updateChore={updateChore} 
+                toggleUpdateChore={toggleUpdateChore}
                 household={household} 
                 showMoney={showMoney} 
                 setShowMoney={setShowMoney} 
@@ -24,7 +24,9 @@ function Home({user, chores, setChores, household, handleLogOut}){
                 handleLogOut={handleLogOut}
                 />
             : <ChildView 
-                user={user} 
+                user={user}
+                updateChore={updateChore} 
+                toggleUpdateChore={toggleUpdateChore} 
                 showMoney={showMoney} 
                 setShowMoney={setShowMoney} 
                 myChores={myChores} 

@@ -1,14 +1,19 @@
 import React from 'react'
-import { ParentTitle, DelButton, LoginButton, UserInfoWrapper } from './StyledComponentElements'
+import { ParentTitle, LoginButton, UserInfoWrapper } from './StyledComponentElements'
 
-const Parent = ({user, chores, setChores, handleLogOut}) => {
+const Parent = ({user, updateChore, toggleUpdateChore, handleLogOut, id}) => {
     function handleRemove(){
-        fetch(`/users/${user.id}`, {
-            method: "DELETE"
-        })
-        handleLogOut()
-        const newChores = chores.map(chore => chore)
-        setChores(newChores)
+        if (id === user.id) {
+            handleLogOut()
+            fetch(`/users/${user.id}`, {
+                method: "DELETE"
+            })
+        } else {
+            fetch(`/users/${user.id}`, {
+                method: "DELETE"
+            })
+            toggleUpdateChore(!updateChore)
+        }
     }
 
     return (

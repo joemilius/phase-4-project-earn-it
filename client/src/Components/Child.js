@@ -39,8 +39,7 @@ const ChildInfo = styled.div`
 
 `
 
-const Child = ({user, chores, setChores, household, showMoney, setShowMoney, myChores, setMyChores}) => {
-    
+const Child = ({user, updateChore, toggleUpdateChore, household, showMoney, setShowMoney, myChores, setMyChores}) => {
     const [showChildInfo, setShowChildInfo] = useState(false)
     const [allChildChores, setAllChildChores] = useState([])
     const [childChoreErrors, setChildChoreErrors] = useState([])
@@ -105,8 +104,7 @@ const Child = ({user, chores, setChores, household, showMoney, setShowMoney, myC
         fetch(`/users/${user.id}`, {
             method: "DELETE"
         })
-        const newChores = chores.map(chore => chore)
-        setChores(newChores)
+        toggleUpdateChore(!updateChore)
     }
 
 
@@ -128,7 +126,9 @@ const Child = ({user, chores, setChores, household, showMoney, setShowMoney, myC
                                 showMoney={showMoney} 
                                 setShowMoney={setShowMoney} 
                                 myChores={myChores} 
-                                setMyChores={setMyChores}/>
+                                setMyChores={setMyChores}
+                                user={user}
+                                />
                             )
                         })}
                     <ChildChoreTitle>Assign New Chore</ChildChoreTitle>

@@ -4,25 +4,22 @@ import Child from './Child'
 import { HomeSubtitle, Wrapper, ParentChildDiv, ParentDiv, ChildDiv } from './StyledComponentElements'
 
 
-function ParentView({user, chores, setChores, household, showMoney, setShowMoney, myChores, setMyChores, handleLogOut}){
-    function deleteUser(){
-        fetch()
-    }
-    
+function ParentView({user, updateChore, toggleUpdateChore, household, showMoney, setShowMoney, myChores, setMyChores, handleLogOut}){    
     return (
         <Wrapper>
             <ParentChildDiv>
                 <ParentDiv>
                     <HomeSubtitle>Household Parents</HomeSubtitle>
-                    {user.household.users.map(user => {
-                        if (user.is_parent === true) {
+                    {user.household.users.map(eachUser => {
+                        if (eachUser.is_parent === true) {
                             return (
                                 <Parent 
-                                    key = {user.id}
-                                    user={user}
+                                    key = {eachUser.id}
+                                    id = {user.id}
+                                    user={eachUser}
                                     household = {household}
-                                    chores = {chores}
-                                    setChores={setChores}
+                                    updateChore={updateChore} 
+                                    toggleUpdateChore={toggleUpdateChore}
                                     handleLogOut={handleLogOut}
                                 />
                             )
@@ -36,8 +33,8 @@ function ParentView({user, chores, setChores, household, showMoney, setShowMoney
                                     <Child 
                                         key={user.id} 
                                         user={user} 
-                                        chores={chores}
-                                        setChores={setChores}
+                                        updateChore={updateChore} 
+                                        toggleUpdateChore={toggleUpdateChore}
                                         household = {household}
                                         showMoney={showMoney} 
                                         setShowMoney={setShowMoney}

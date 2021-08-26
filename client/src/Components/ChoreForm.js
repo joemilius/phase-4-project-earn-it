@@ -43,11 +43,11 @@ function ChoreForm({user, setChores, chores, toggleUpdateChore, updateChore}){
         .then(response => {
             if (response.ok) {
                 response.json().then((chore) => setChores([...chores, chore]));
+                toggleUpdateChore(!updateChore)
             } else {
                 response.json().then((err) => setChoreErrors(err.errors));
             }
         })
-        toggleUpdateChore(!updateChore)
     }
 
     function handleDelete(e) {
@@ -57,6 +57,7 @@ function ChoreForm({user, setChores, chores, toggleUpdateChore, updateChore}){
             method: "DELETE",
         })
         setChores(choresWithoutDeletedChore)
+        toggleUpdateChore(!updateChore)
     }
     
     return (

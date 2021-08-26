@@ -19,7 +19,7 @@ const Navbar = ({ user, isParent, handleLogOut }) => {
                             Add New Chore
                         </NavLink>
                         <NavLink to="/signup" activeStyle>
-                            Add Child Account
+                            Add New Member
                         </NavLink>
                         </>
                     }

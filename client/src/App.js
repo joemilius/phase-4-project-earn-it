@@ -14,11 +14,19 @@ function App() {
   const [household, setHousehold] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [updateChore, toggleUpdateChore] = useState(false)
-      
+    
   useEffect(() => {
+      fetch(`/chores`)
+      .then(response => response.json())
+      .then(data => {
+          setChores(data)
+      })
+  },[updateChore])
+  
+  useEffect(() => {
+    setIsLoading(true)
     fetch("/me").then((resp) => {
       if (resp.ok) {
-        setIsLoading(true)
         resp.json().then((user) => {
           setIsLoading(false)
           setUser(user)
@@ -27,7 +35,7 @@ function App() {
         });
       }
     })
-  }, [chores]);
+  }, [updateChore]);
 
   function handleLogOut() {
     fetch("/logout", { method: "DELETE"}).then((resp) => {
@@ -52,7 +60,7 @@ function App() {
       :
       <>
       <Switch>
-        <Route path="/" exact component={() => <Home user={user} chores={chores} setChores={setChores} household={household} handleLogOut={handleLogOut}/>} /> 
+        <Route path="/" exact component={() => <Home user={user} updateChore={updateChore} toggleUpdateChore={toggleUpdateChore} household={household} handleLogOut={handleLogOut}/>} /> 
       </Switch>
       <Switch>
         <Route path="/new-chore" exact component={() => <ChoreForm user={user} chores={chores} setChores={setChores} toggleUpdateChore={toggleUpdateChore} updateChore={updateChore}/>} />
