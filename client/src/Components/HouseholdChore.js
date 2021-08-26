@@ -6,6 +6,10 @@ const ChoreDelButton = styled.button`
     text-align: center;
     border-radius: 20px;
     padding: .5em;
+    &:hover{
+        background: black;
+        color: #f2f2f2;
+    }
 `
 
 const HouseholdChore = ({chore, handleDelete, id}) => {    

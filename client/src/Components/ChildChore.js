@@ -1,15 +1,27 @@
-import {ChoreName, ChoreDesc, ChoreDiv } from './StyledComponentElements'
-import { FaClock, FaMoneyBillAlt } from 'react-icons/fa'
+import {ChoreName, ChoreDesc, ChoreDiv, DelButton } from './StyledComponentElements'
+import { FaClock, FaMoneyBillAlt, FaRegCircle, FaCheckCircle } from 'react-icons/fa'
 import styled from 'styled-components'
 
-const DelButton = styled.button`
-    text-align: center;
-    border-radius: 20px;
-    padding: .5em;
-    background: black;
-    color: white;
+// const DelButton = styled.button`
+//     text-align: center;
+//     border-radius: 20px;
+//     padding: .5em;
+//     &:hover{
+//         transition: all 0.2s ease-in-out;
+//         background: black;
+//         color: #f2f2f2;
+//     }
+// `
+const CompletedButton = styled.button`
+        width: 150px;
+        border-radius: 20px;
+        padding: .5em;
+        &:hover{
+        transition: all 0.2s ease-in-out;
+        background: black;
+        color: #f2f2f2;
+    }
 `
-
 
 const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildChores, setAllChildChores}) => {
 
@@ -64,7 +76,7 @@ const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildC
             <ChoreDesc>{child_chore.chore.description}</ChoreDesc><br/>
             <ChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</ChoreDesc>
             <ChoreDesc><FaMoneyBillAlt/> ${child_chore.reward}</ChoreDesc>
-            {child_chore.is_completed ? <ChoreDesc>Completed <span onClick={handleComplete}>✅</span></ChoreDesc> : <ChoreDesc>Completed <span onClick={handleComplete}>✖️</span></ChoreDesc>}
+            {child_chore.is_completed ? <CompletedButton onClick={handleComplete}>Completed <FaCheckCircle/></CompletedButton> : <CompletedButton onClick={handleComplete}>Completed? <FaRegCircle/></CompletedButton>}
             <DelButton onClick={handleChildChoreDelete}>Unassign Chore from Child</DelButton>
         </ChoreDiv>
     )
