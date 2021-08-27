@@ -3,29 +3,18 @@ import LoginPage from './Components/LoginPage';
 import Home from './Components/Home' 
 import Navbar from './Components/Navbar/Navbar';
 import ChoreForm from './Components/ChoreForm';
-import SignUp from './Components/SignUp';
 import NewMember from './Components/NewMember'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 function App() {
   const [errors, setErrors] = useState([])
   const [user, setUser] = useState(null)
-  const [chores, setChores] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   const [refresh, setRefresh] = useState(false)
   const [isParent, setIsParent] = useState('')
   const [household, setHousehold] = useState([])
 
-  // useEffect(() => {
-  //     fetch(`/chores`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //         setChores(data)
-  //     })
-  // },[updateChore])
   
   useEffect(() => {
-    setIsLoading(true)
     fetch("/me").then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => {
@@ -52,7 +41,7 @@ function App() {
       <Navbar user={user} isParent={isParent} handleLogOut={handleLogOut} />
       { !user
       ? 
-    <LoginPage 
+      <LoginPage 
       setUser = {setUser} 
       setIsParent={setIsParent} 
       setErrors={setErrors} 
