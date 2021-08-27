@@ -14,7 +14,7 @@ const Navbar = ({ user, isParent, handleLogOut }) => {
                     <NavLink to="/" activeStyle>
                         Home
                     </NavLink>
-                    {isParent && 
+                    {isParent &&
                         <>
                         <NavLink to="/new-chore" activeStyle>
                             Add New Chore
@@ -23,7 +23,7 @@ const Navbar = ({ user, isParent, handleLogOut }) => {
                             Add New Member
                         </NavLink>
                         </>
-                    }
+                        }
                 </NavMenu>
                 <NavBtnCont>
                     <NavBtn style={{ visibility: user ? 'visible' : "hidden"}}onClick={handleLogOut}>Log Out</NavBtn>       
