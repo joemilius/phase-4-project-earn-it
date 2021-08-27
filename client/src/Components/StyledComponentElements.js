@@ -191,3 +191,12 @@ export const SignUpForm = styled.form`
     display: grid;
     justify-content: center;
 `
+
+export const HouseholdChoresDiv = styled.div`
+    display: grid;
+    justify-items: center;
+    justify-content: space-evenly;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, 15rem) 20%; 
+    grid-gap: 20px; 
+`
