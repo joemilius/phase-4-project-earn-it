@@ -40,7 +40,7 @@ export const BottomChoreDesc = styled.p`
     display: block;
 `
 
-const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
+const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, refresh, setRefresh}) => {
 
     function handleComplete(event){
         event.preventDefault()

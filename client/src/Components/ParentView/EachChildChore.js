@@ -1,4 +1,4 @@
-import {ChoreName, ChoreDesc, ChoreDiv } from '../StyledComponentElements'
+import {ChoreName, ChoreDiv } from '../StyledComponentElements'
 import { FaClock, FaMoneyBillAlt, FaRegCircle, FaCheckCircle } from 'react-icons/fa'
 import styled from 'styled-components'
 
@@ -66,7 +66,7 @@ export const BottomChoreDesc = styled.p`
     display: block;
 `
 
-const EachChildChore = ({child_chore, allChildChores, setAllChildChores, user}) => {
+const EachChildChore = ({child_chore, allChildChores, setAllChildChores}) => {
 
     function handleComplete(event){
         event.preventDefault()
@@ -101,7 +101,6 @@ const EachChildChore = ({child_chore, allChildChores, setAllChildChores, user}) 
         const updatedAllChildChores = allChildChores.filter((childChore) => childChore.id !== child_chore.id);
         setAllChildChores(updatedAllChildChores)
     }
-
 
         return (
             <ChoreDiv>

@@ -1,17 +1,9 @@
 import React, {useState} from 'react'
 import ChoreError from './ChoreError'
 import HouseholdChore from './HouseholdChore'
-import { Wrapper, HomeSubtitle, Input, Button } from './StyledComponentElements'
+import { Wrapper, HomeSubtitle, Input, Button, HouseholdChoresDiv } from './StyledComponentElements'
 import styled from 'styled-components'
 
-const HouseholdChoresDiv = styled.div`
-    display: grid;
-    justify-items: center;
-    justify-content: space-evenly;
-    align-items: center;
-    grid-template-columns: repeat(auto-fill, 15rem) 20%; 
-    grid-gap: 20px; 
-`
 const StyledChoreForm = styled.form`
     display: grid;
     justify-content: center;
