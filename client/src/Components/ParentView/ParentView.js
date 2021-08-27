@@ -1,28 +1,27 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import Parent from './Parent'
-import Child from './Child'
-import { HomeSubtitle, Wrapper, ParentChildDiv, ParentDiv, ChildDiv } from './StyledComponentElements'
+import EachChild from './EachChild'
+import { HomeSubtitle, Wrapper, ParentChildDiv, ParentDiv, ChildDiv } from '../StyledComponentElements'
 
 
-function ParentView({user, chores, setChores, household, showMoney, setShowMoney, myChores, setMyChores, handleLogOut}){
-    function deleteUser(){
-        fetch()
-    }
+function ParentView({user, refresh, setRefresh, household, handleLogOut}){
+    
     
     return (
         <Wrapper>
             <ParentChildDiv>
                 <ParentDiv>
                     <HomeSubtitle>Household Parents</HomeSubtitle>
-                    {user.household.users.map(user => {
-                        if (user.is_parent === true) {
+                    {user.household.users.map(eachUser => {
+                        if (eachUser.is_parent === true) {
                             return (
                                 <Parent 
-                                    key = {user.id}
-                                    user={user}
+                                    key = {eachUser.id}
+                                    currentUserId = {user.id}
+                                    eachUser = {eachUser}
                                     household = {household}
-                                    chores = {chores}
-                                    setChores={setChores}
+                                    refresh = {refresh}
+                                    setRefresh={setRefresh}
                                     handleLogOut={handleLogOut}
                                 />
                             )
@@ -33,16 +32,12 @@ function ParentView({user, chores, setChores, household, showMoney, setShowMoney
                         {user.household.users.map(user => {
                             if (user.is_parent === false) {
                                 return (
-                                    <Child 
+                                    <EachChild 
                                         key={user.id} 
                                         user={user} 
-                                        chores={chores}
-                                        setChores={setChores}
+                                        refresh={refresh}
+                                        setRefresh={setRefresh}
                                         household = {household}
-                                        showMoney={showMoney} 
-                                        setShowMoney={setShowMoney}
-                                        myChores={myChores} 
-                                        setMyChores={setMyChores}
                                     />
                                 )
                         }})}

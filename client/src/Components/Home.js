@@ -1,11 +1,9 @@
-import React, {useState} from 'react'
-import ParentView from './ParentView'
-import ChildView from './ChildView'
+import React from 'react'
+import ParentView from './ParentView/ParentView'
+import ChildView from './ChildView/ChildView'
 import { Title, HomeSubtitle, Wrapper } from './StyledComponentElements'
 
-function Home({user, chores, setChores, household, handleLogOut}){
-    const [showMoney, setShowMoney] = useState(false)
-    const [myChores, setMyChores] = useState([])
+function Home({user, refresh, setRefresh, household, handleLogOut}){
     
     return (
         <Wrapper>
@@ -14,21 +12,14 @@ function Home({user, chores, setChores, household, handleLogOut}){
             {user.is_parent 
             ? <ParentView 
                 user={user} 
-                chores={chores}
-                setChores={setChores} 
-                household={household} 
-                showMoney={showMoney} 
-                setShowMoney={setShowMoney} 
-                myChores={myChores} 
-                setMyChores={setMyChores}
+                refresh={refresh}
+                setRefresh={setRefresh} 
+                household={household}  
                 handleLogOut={handleLogOut}
                 />
             : <ChildView 
-                user={user} 
-                showMoney={showMoney} 
-                setShowMoney={setShowMoney} 
-                myChores={myChores} 
-                setMyChores={setMyChores}/>
+                user={user}
+                />
             }
         </Wrapper>
     )

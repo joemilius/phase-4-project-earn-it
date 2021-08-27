@@ -1,14 +1,15 @@
 import React from 'react'
-import { Nav, NavLink, NavBtn, NavBtnCont, NavMenu, Bars } from './NavbarElements'
+import { Nav, NavLink, NavBtn, NavBtnCont, NavMenu } from './NavbarElements'
 
 const Navbar = ({ user, isParent, handleLogOut }) => {
+
+
     return (
         <>
             <Nav>
                 <NavLink to="/">
                     <h1>ChoresApp</h1>
                 </NavLink>
-                {/* <Bars /> */}
                 <NavMenu>
                     <NavLink to="/" activeStyle>
                         Home
@@ -19,7 +20,7 @@ const Navbar = ({ user, isParent, handleLogOut }) => {
                             Add New Chore
                         </NavLink>
                         <NavLink to="/signup" activeStyle>
-                            Add Child Account
+                            Add New Member
                         </NavLink>
                         </>
                     }

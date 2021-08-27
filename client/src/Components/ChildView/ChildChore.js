@@ -1,4 +1,4 @@
-import {ChoreName, ChoreDesc, ChoreDiv } from './StyledComponentElements'
+import {ChoreName, ChoreDesc, ChildChoreDiv } from '../StyledComponentElements'
 import { FaClock, FaMoneyBillAlt, FaRegCircle, FaCheckCircle } from 'react-icons/fa'
 import styled from 'styled-components'
 
@@ -9,7 +9,7 @@ const CompletedButton = styled.button`
     width: 150px;
     border-radius: 20px;
     padding: .5em;
-    float: right;
+    text-align: center;
     &:hover{
         transition: all 0.2s ease-in-out;
         background: #fff;
@@ -34,23 +34,13 @@ const DelButton = styled.button`
     }
 `
 
-const TopRow = styled.div`
-    display: flex; 
-    flex-direction: row;
-`
-
-const BottomRow = styled.div`
-    display: block;
-    float: right;
-`
-
 export const BottomChoreDesc = styled.p`
     text-align: right;
     padding: .1em;
     display: block;
 `
 
-const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildChores, setAllChildChores}) => {
+const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
 
     function handleComplete(event){
         event.preventDefault()
@@ -73,16 +63,7 @@ const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildC
                   return childChore;
                 }
             })
-
-            const updatedAllChildChores = allChildChores.map((childChore) => {
-                if (childChore.id === data.id) {
-                    return { ...childChore, is_completed: data.is_completed };
-                  } else {
-                    return childChore;
-                  }
-            })
                 setMyChores(updatedChildChores)
-                setAllChildChores(updatedAllChildChores)
             })
     }
 
@@ -92,24 +73,19 @@ const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildC
             method: "DELETE"
         })
         const updatedChildChores = myChores.filter((childChore) => childChore.id !== child_chore.id);
-        const updatedAllChildChores = allChildChores.filter((childChore) => childChore.id !== child_chore.id);
         setMyChores(updatedChildChores)
-        setAllChildChores(updatedAllChildChores)
     }
 
     return (
-        <ChoreDiv>
-            <TopRow>
+        <ChildChoreDiv>
+            
                 <ChoreName>{child_chore.chore.chore_name}</ChoreName>
                 <ChoreDesc>{child_chore.chore.description}</ChoreDesc>
-            </TopRow>
-            <BottomRow>
-                <BottomChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</BottomChoreDesc>
-                <BottomChoreDesc><FaMoneyBillAlt/> ${child_chore.reward}</BottomChoreDesc>
+                <ChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</ChoreDesc>
+                <ChoreDesc><FaMoneyBillAlt/> ${child_chore.reward}</ChoreDesc>
                 {child_chore.is_completed ? <CompletedButton onClick={handleComplete}>Completed <FaCheckCircle/></CompletedButton> : <CompletedButton onClick={handleComplete}>Completed? <FaRegCircle/></CompletedButton>}
-                <DelButton onClick={handleChildChoreDelete}>Unassign Chore from Child</DelButton>
-            </BottomRow>
-        </ChoreDiv>
+            
+        </ChildChoreDiv>
     )
 }
 

@@ -1,16 +1,16 @@
-import React, { useState } from "react"
-import { Title, Subtitle, Wrapper, Input, Label, LoginButton, Button, Wrapper2, SignUpForm} from './StyledComponentElements'
+import React, {useState, useEffect} from 'react'
+import Error from './Error'
+import { Title, Wrapper, Input, Label, LoginButton, Button, Wrapper2, SignUpForm, Subtitle } from './StyledComponentElements'
 
-
-
-function SignUp({ setUser, handleShowLoginClearErrors, setErrors }){
+function NewMember({ refresh, setRefresh, user, errors, setErrors }){
     const [userData, setUserData] = useState({
         username: "",
         password: "",
         first_name: "",
         is_parent: "",
         email: "",
-        last_name: ""
+        last_name: "",
+        household_id: user.household.id
     })
 
     function handleCreateUser(event) {
@@ -23,31 +23,43 @@ function SignUp({ setUser, handleShowLoginClearErrors, setErrors }){
             [event.target.name] : Boolean(event.target.value)})
     }
 
-    function userSubmit(event) {
-    event.preventDefault()
-    fetch("/signup", {
-        method: "POST",
-        headers: {
-        "Content-Type": "Application/json"
-        },
-        body: JSON.stringify(userData)
-    }).then((resp) => {
-        if (resp.ok) {
-            resp.json().then((user) => setUser(user));
-        } else {
-            resp.json().then((err) => setErrors(err.errors));
-        }
-    })
-}
- 
+    function handleClearErrors(){
+        setErrors([])
+    }
+    
+
+    function newMemberSubmit(event) {
+        setErrors([])
+        event.preventDefault()
+        fetch("/households", {
+            method: "POST",
+            headers: {
+            "Content-Type": "Application/json"
+            },
+            body: JSON.stringify(userData)
+        })
+        .then((response) => {
+            if (response.ok) {
+                response.json().then((data) => {
+                    setRefresh(!refresh)
+                });
+            } else {
+                response.json().then((err) => setErrors(err.errors));
+            }
+        });
+
+    }
+    
+    
+
+
     return (
+        <>
         <Wrapper>
-            <SignUpForm onSubmit={userSubmit}>
+            <SignUpForm onSubmit={newMemberSubmit}>
                 <Title>Create New User</Title>
                 <Label htmlFor='first_name'>First Name:</Label>
                 <Input name='first_name' placeholder='First Name' value={userData.first_name} onChange={handleCreateUser}></Input>
-                <Label htmlFor='last_name'>Last Name:</Label>
-                <Input name='last_name' placeholder='Last Name' value={userData.last_name} onChange={handleCreateUser}></Input>
                 <Label htmlFor='email'>Email:</Label>
                 <Input name='email' placeholder='Email' value={userData.email} onChange={handleCreateUser}></Input>
                 <Label htmlFor='username'>Username:</Label>
@@ -61,11 +73,18 @@ function SignUp({ setUser, handleShowLoginClearErrors, setErrors }){
                     <Label htmlFor='is_child'>Child</Label>
                     <Input type='radio' name='is_parent' value='' onChange={handleRadioButton}></Input>
                     <LoginButton>Sign Up</LoginButton>
-                    <Button onClick={handleShowLoginClearErrors}>Already Have an Account?</Button>
+                    {errors.map((err) => {
+                        return(
+                            <Error key={err}>{err}</Error>
+                        )
+                    })}
+                    <Button onClick={handleClearErrors}>Already Have an Account?</Button>
                 </Wrapper2>
             </SignUpForm>
         </Wrapper>
+        
+        </>
     )
 }
 
-export default SignUp
+export default NewMember

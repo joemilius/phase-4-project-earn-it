@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Title, Wrapper, Input, Label, LoginButton, Button } from './StyledComponentElements'
 
-const Login = ({ setErrors, setUser, handleShowLoginClearErrors, setIsParent }) => {
+const Login = ({ handleShowLoginClearErrors, setUser, setErrors, setIsParent }) => {
     const [loginData, setLoginData] = useState({
         username: "",
         password: ""
@@ -32,7 +32,7 @@ const Login = ({ setErrors, setUser, handleShowLoginClearErrors, setIsParent }) 
             }
         });
     }
-
+    
     return (
         <Wrapper>
             <form onSubmit={loginSubmit}>
