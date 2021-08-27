@@ -45,8 +45,6 @@ function App() {
     })
   }
 
-  
-
   return (
     <Router>
       <Navbar user={user} isParent={isParent} handleLogOut={handleLogOut} />
