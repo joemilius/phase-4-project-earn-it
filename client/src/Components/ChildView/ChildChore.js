@@ -40,7 +40,7 @@ export const BottomChoreDesc = styled.p`
     display: block;
 `
 
-const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
+const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, refresh, setRefresh}) => {
 
     function handleComplete(event){
         event.preventDefault()
@@ -67,18 +67,17 @@ const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney}) => {
             })
     }
 
-    function handleChildChoreDelete(event){
-        event.preventDefault()
-        fetch(`/child_chores/${child_chore.id}`, {
-            method: "DELETE"
-        })
-        const updatedChildChores = myChores.filter((childChore) => childChore.id !== child_chore.id);
-        setMyChores(updatedChildChores)
-    }
+    // function handleChildChoreDelete(event){
+    //     event.preventDefault()
+    //     fetch(`/child_chores/${child_chore.id}`, {
+    //         method: "DELETE"
+    //     })
+    //     const updatedChildChores = myChores.filter((childChore) => childChore.id !== child_chore.id);
+    //     setMyChores(updatedChildChores)
+    // }
 
     return (
         <ChildChoreDiv>
-            
                 <ChoreName>{child_chore.chore.chore_name}</ChoreName>
                 <ChoreDesc>{child_chore.chore.description}</ChoreDesc>
                 <ChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</ChoreDesc>

@@ -19,6 +19,8 @@ function Home({user, refresh, setRefresh, household, handleLogOut}){
                 />
             : <ChildView 
                 user={user}
+                refresh={refresh}
+                setRefresh={setRefresh}
                 />
             }
         </Wrapper>

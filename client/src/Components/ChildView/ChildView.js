@@ -15,27 +15,24 @@ const MoneyEarned = styled.h2`
     text-align: center;
 `
 
-function ChildView({user}){
+function ChildView({user, refresh, setRefresh}){
     const [showMoney, setShowMoney] = useState(false)
     const [myChores, setMyChores] = useState([])
     const [earnedMoney, setEarnedMoney] = useState('')
     
-    
-
     useEffect(() => {
         fetch(`/child_chores/${user.id}`)
         .then(response => response.json())
         .then(data => setMyChores(data))
-    }, [user.id])
+    }, [])
 
-        function getMyMoney(){
-            setShowMoney(!showMoney)
-        fetch(`/me`)
-          .then(response => response.json())
-          .then(data => setEarnedMoney(data.total_earnings))
-        }
+    function getMyMoney(){
+        setShowMoney(!showMoney)
+    fetch(`/me`)
+        .then(response => response.json())
+        .then(data => setEarnedMoney(data.total_earnings))
+    }
    
-    
     return (
         <Wrapper>
             <LoginButton onClick={getMyMoney}>Money Earned</LoginButton>
@@ -52,6 +49,8 @@ function ChildView({user}){
                         myChores = {myChores}
                         setMyChores = {setMyChores}
                         setShowMoney= {setShowMoney}
+                        setRefresh={setRefresh}
+                        refresh={refresh}
                     />
                 )
             })}

@@ -53,7 +53,7 @@ export const BottomChoreDesc = styled.p`
     display: block;
 `
 
-const EachChildChore = ({child_chore, allChildChores, setAllChildChores, user}) => {
+const EachChildChore = ({child_chore, allChildChores, setAllChildChores}) => {
 
     function handleComplete(event){
         event.preventDefault()
@@ -89,7 +89,6 @@ const EachChildChore = ({child_chore, allChildChores, setAllChildChores, user}) 
         setAllChildChores(updatedAllChildChores)
     }
 
-    if (user.is_parent === true) {
         return (
             <ChoreDiv>
                 <TopRow>
@@ -104,18 +103,6 @@ const EachChildChore = ({child_chore, allChildChores, setAllChildChores, user}) 
                 </BottomRow>
             </ChoreDiv>
         )
-    } else {
-        return (
-            <HouseholdChoresDiv>
-                <ChoreName>{child_chore.chore.chore_name}</ChoreName>
-                <ChoreDesc>{child_chore.chore.description}</ChoreDesc>
-                <ChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</ChoreDesc>
-                <ChoreDesc><FaMoneyBillAlt/> ${child_chore.reward}</ChoreDesc>
-                {child_chore.is_completed ? <CompletedButton onClick={handleComplete}>Completed <FaCheckCircle/></CompletedButton> : <CompletedButton onClick={handleComplete}>Completed? <FaRegCircle/></CompletedButton>}
-                <DelButton onClick={handleChildChoreDelete}>Unassign Chore from Child</DelButton>
-            </HouseholdChoresDiv>
-        )
-    }
 }
 
 export default EachChildChore
