@@ -14,11 +14,6 @@ function App() {
   const [isParent, setIsParent] = useState('')
   const [household, setHousehold] = useState([])
   
-
-
-  
-  console.log(user)
-  
   useEffect(() => {
     fetch("/me").then((resp) => {
       if (resp.ok) {
@@ -38,8 +33,6 @@ function App() {
       }
     })
   }
-
-  
 
   return (
     <Router>
