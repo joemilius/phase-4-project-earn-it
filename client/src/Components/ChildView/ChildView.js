@@ -15,15 +15,9 @@ const MoneyEarned = styled.h2`
     text-align: center;
 `
 
-<<<<<<< HEAD:client/src/Components/ChildView.js
-function ChildView({ user, showMoney, setShowMoney, myChores, setMyChores}){
-    
-    const [allChildChores, setAllChildChores] = useState([])
-=======
 function ChildView({user}){
     const [showMoney, setShowMoney] = useState(false)
     const [myChores, setMyChores] = useState([])
->>>>>>> selfDelete:client/src/Components/ChildView/ChildView.js
     const [earnedMoney, setEarnedMoney] = useState('')
     
     
@@ -58,12 +52,6 @@ function ChildView({user}){
                         myChores = {myChores}
                         setMyChores = {setMyChores}
                         setShowMoney= {setShowMoney}
-<<<<<<< HEAD:client/src/Components/ChildView.js
-                        allChildChores={allChildChores} 
-                        setAllChildChores={setAllChildChores}
-                        user = {user}
-=======
->>>>>>> selfDelete:client/src/Components/ChildView/ChildView.js
                     />
                 )
             })}

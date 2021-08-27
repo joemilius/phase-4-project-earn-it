@@ -1,8 +1,4 @@
-<<<<<<< HEAD:client/src/Components/ChildChore.js
-import {ChoreName, ChoreDesc, HouseholdChoreDiv, ChoreDiv } from './StyledComponentElements'
-=======
-import {ChoreName, ChoreDesc, ChoreDiv } from '../StyledComponentElements'
->>>>>>> selfDelete:client/src/Components/ParentView/EachChildChore.js
+import {ChoreName, ChoreDesc, ChoreDiv, HouseholdChoresDiv } from '../StyledComponentElements'
 import { FaClock, FaMoneyBillAlt, FaRegCircle, FaCheckCircle } from 'react-icons/fa'
 import styled from 'styled-components'
 
@@ -57,11 +53,7 @@ export const BottomChoreDesc = styled.p`
     display: block;
 `
 
-<<<<<<< HEAD:client/src/Components/ChildChore.js
-const ChildChore = ({child_chore, myChores, setMyChores, setShowMoney, allChildChores, setAllChildChores, user}) => {
-=======
-const EachChildChore = ({child_chore, allChildChores, setAllChildChores}) => {
->>>>>>> selfDelete:client/src/Components/ParentView/EachChildChore.js
+const EachChildChore = ({child_chore, allChildChores, setAllChildChores, user}) => {
 
     function handleComplete(event){
         event.preventDefault()
@@ -114,14 +106,14 @@ const EachChildChore = ({child_chore, allChildChores, setAllChildChores}) => {
         )
     } else {
         return (
-            <HouseholdChoreDiv>
+            <HouseholdChoresDiv>
                 <ChoreName>{child_chore.chore.chore_name}</ChoreName>
                 <ChoreDesc>{child_chore.chore.description}</ChoreDesc>
                 <ChoreDesc><FaClock/> {child_chore.time_to_complete} minutes</ChoreDesc>
                 <ChoreDesc><FaMoneyBillAlt/> ${child_chore.reward}</ChoreDesc>
                 {child_chore.is_completed ? <CompletedButton onClick={handleComplete}>Completed <FaCheckCircle/></CompletedButton> : <CompletedButton onClick={handleComplete}>Completed? <FaRegCircle/></CompletedButton>}
                 <DelButton onClick={handleChildChoreDelete}>Unassign Chore from Child</DelButton>
-            </HouseholdChoreDiv>
+            </HouseholdChoresDiv>
         )
     }
 }

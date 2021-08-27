@@ -39,12 +39,8 @@ const ChildInfo = styled.div`
 
 `
 
-<<<<<<< HEAD:client/src/Components/Child.js
-const Child = ({user, updateChore, toggleUpdateChore, household, showMoney, setShowMoney, myChores, setMyChores}) => {
-=======
 const EachChild = ({user, refresh, setRefresh, household }) => {
     
->>>>>>> selfDelete:client/src/Components/ParentView/EachChild.js
     const [showChildInfo, setShowChildInfo] = useState(false)
     const [allChildChores, setAllChildChores] = useState([])
     const [childChoreErrors, setChildChoreErrors] = useState([])
@@ -110,11 +106,7 @@ const EachChild = ({user, refresh, setRefresh, household }) => {
         fetch(`/users/${user.id}`, {
             method: "DELETE"
         })
-<<<<<<< HEAD:client/src/Components/Child.js
-        toggleUpdateChore(!updateChore)
-=======
         setRefresh(!refresh)
->>>>>>> selfDelete:client/src/Components/ParentView/EachChild.js
     }
 
 
@@ -133,14 +125,6 @@ const EachChild = ({user, refresh, setRefresh, household }) => {
                                 child_chore={child_chore} 
                                 allChildChores={allChildChores} 
                                 setAllChildChores={setAllChildChores} 
-<<<<<<< HEAD:client/src/Components/Child.js
-                                showMoney={showMoney} 
-                                setShowMoney={setShowMoney} 
-                                myChores={myChores} 
-                                setMyChores={setMyChores}
-                                user={user}
-=======
->>>>>>> selfDelete:client/src/Components/ParentView/EachChild.js
                                 />
                             )
                         })}

@@ -10,17 +10,19 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 function App() {
   const [errors, setErrors] = useState([])
   const [user, setUser] = useState(null)
+  const [chores, setChores] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   const [refresh, setRefresh] = useState(false)
   const [isParent, setIsParent] = useState('')
   const [household, setHousehold] = useState([])
 
-  useEffect(() => {
-      fetch(`/chores`)
-      .then(response => response.json())
-      .then(data => {
-          setChores(data)
-      })
-  },[updateChore])
+  // useEffect(() => {
+  //     fetch(`/chores`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //         setChores(data)
+  //     })
+  // },[updateChore])
   
   useEffect(() => {
     setIsLoading(true)
