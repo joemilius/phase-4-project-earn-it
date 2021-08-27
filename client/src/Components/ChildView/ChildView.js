@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import ChildChore from './ChildChore'
-import {Wrapper, HomeSubtitle, LoginButton} from './StyledComponentElements'
+import {Wrapper, HomeSubtitle, LoginButton} from '../StyledComponentElements'
 import styled from 'styled-components'
 
 const ChildChoresDiv = styled.div`
@@ -15,44 +15,24 @@ const MoneyEarned = styled.h2`
     text-align: center;
 `
 
+<<<<<<< HEAD:client/src/Components/ChildView.js
 function ChildView({ user, showMoney, setShowMoney, myChores, setMyChores}){
     
     const [allChildChores, setAllChildChores] = useState([])
+=======
+function ChildView({user}){
+    const [showMoney, setShowMoney] = useState(false)
+    const [myChores, setMyChores] = useState([])
+>>>>>>> selfDelete:client/src/Components/ChildView/ChildView.js
     const [earnedMoney, setEarnedMoney] = useState('')
-    const [completed, setCompleted] = useState(false)
+    
     
 
     useEffect(() => {
         fetch(`/child_chores/${user.id}`)
         .then(response => response.json())
         .then(data => setMyChores(data))
-    }, [completed])
-
-    // function handleFinished(event){
-    //     event.preventDefault()
-    //     console.log(event.target.value)
-    //     setShowMoney(false)
-    //     setCompleted(!completed)
-    //     fetch(`child_chores/${event.target.id}`,{
-    //         method: "PATCH",
-    //         headers: {
-    //             "Content-Type" : "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             is_completed : event.target.value
-    //         })
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         const updatedMyChores = myChores.map((childChore) => {
-    //             if (childChore.id === data.id) {
-    //                 return { ...childChore, is_completed: data.is_completed };
-    //             } else {
-    //                 return childChore;
-    //             }})
-    //             setMyChores(updatedMyChores)
-    //         })
-    //     }
+    }, [user.id])
 
         function getMyMoney(){
             setShowMoney(!showMoney)
@@ -78,9 +58,12 @@ function ChildView({ user, showMoney, setShowMoney, myChores, setMyChores}){
                         myChores = {myChores}
                         setMyChores = {setMyChores}
                         setShowMoney= {setShowMoney}
+<<<<<<< HEAD:client/src/Components/ChildView.js
                         allChildChores={allChildChores} 
                         setAllChildChores={setAllChildChores}
                         user = {user}
+=======
+>>>>>>> selfDelete:client/src/Components/ChildView/ChildView.js
                     />
                 )
             })}

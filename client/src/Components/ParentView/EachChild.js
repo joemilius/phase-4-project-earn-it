@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import ChildChore from './ChildChore'
-import ChildChoreError from './ChildChoreError'
-import { UserInfoWrapper, FormWrapper, StyledSelect, StyledButton, DelButton } from './StyledComponentElements'
+import EachChildChore from './EachChildChore'
+import ChildChoreError from './EachChildChoreError'
+import { UserInfoWrapper, FormWrapper, StyledSelect, StyledButton, DelButton } from '../StyledComponentElements'
 import styled from 'styled-components'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 
@@ -39,7 +39,12 @@ const ChildInfo = styled.div`
 
 `
 
+<<<<<<< HEAD:client/src/Components/Child.js
 const Child = ({user, updateChore, toggleUpdateChore, household, showMoney, setShowMoney, myChores, setMyChores}) => {
+=======
+const EachChild = ({user, refresh, setRefresh, household }) => {
+    
+>>>>>>> selfDelete:client/src/Components/ParentView/EachChild.js
     const [showChildInfo, setShowChildInfo] = useState(false)
     const [allChildChores, setAllChildChores] = useState([])
     const [childChoreErrors, setChildChoreErrors] = useState([])
@@ -78,6 +83,7 @@ const Child = ({user, updateChore, toggleUpdateChore, household, showMoney, setS
             if (response.ok) {
                 response.json().then((data) => {
                     setAllChildChores([...allChildChores, data])
+                    setChildChoreErrors([])
                     setChildChore({
                         reward: "",
                         time_to_complete: "",
@@ -104,7 +110,11 @@ const Child = ({user, updateChore, toggleUpdateChore, household, showMoney, setS
         fetch(`/users/${user.id}`, {
             method: "DELETE"
         })
+<<<<<<< HEAD:client/src/Components/Child.js
         toggleUpdateChore(!updateChore)
+=======
+        setRefresh(!refresh)
+>>>>>>> selfDelete:client/src/Components/ParentView/EachChild.js
     }
 
 
@@ -118,16 +128,19 @@ const Child = ({user, updateChore, toggleUpdateChore, household, showMoney, setS
                     <ChildChoreTitle>Assigned Chores</ChildChoreTitle>
                     {allChildChores && allChildChores.map(child_chore => {
                         return(
-                            <ChildChore 
+                            <EachChildChore 
                                 key={child_chore.id} 
                                 child_chore={child_chore} 
                                 allChildChores={allChildChores} 
                                 setAllChildChores={setAllChildChores} 
+<<<<<<< HEAD:client/src/Components/Child.js
                                 showMoney={showMoney} 
                                 setShowMoney={setShowMoney} 
                                 myChores={myChores} 
                                 setMyChores={setMyChores}
                                 user={user}
+=======
+>>>>>>> selfDelete:client/src/Components/ParentView/EachChild.js
                                 />
                             )
                         })}
@@ -169,4 +182,4 @@ const Child = ({user, updateChore, toggleUpdateChore, household, showMoney, setS
     )
 }
 
-export default Child
+export default EachChild

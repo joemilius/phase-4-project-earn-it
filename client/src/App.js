@@ -4,17 +4,16 @@ import Home from './Components/Home'
 import Navbar from './Components/Navbar/Navbar';
 import ChoreForm from './Components/ChoreForm';
 import SignUp from './Components/SignUp';
+import NewMember from './Components/NewMember'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 function App() {
   const [errors, setErrors] = useState([])
   const [user, setUser] = useState(null)
-  const [chores, setChores] = useState([])
+  const [refresh, setRefresh] = useState(false)
   const [isParent, setIsParent] = useState('')
   const [household, setHousehold] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [updateChore, toggleUpdateChore] = useState(false)
-    
+
   useEffect(() => {
       fetch(`/chores`)
       .then(response => response.json())
@@ -28,14 +27,13 @@ function App() {
     fetch("/me").then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => {
-          setIsLoading(false)
           setUser(user)
           setIsParent(user.is_parent)
           setHousehold(user.household)
         });
       }
     })
-  }, [updateChore]);
+  }, [refresh]);
 
   function handleLogOut() {
     fetch("/logout", { method: "DELETE"}).then((resp) => {
@@ -45,28 +43,36 @@ function App() {
     })
   }
 
-  if (isLoading === true) {
-      return (
-        <h1>Loading</h1>
-        )
-  }
+  
 
   return (
     <Router>
       <Navbar user={user} isParent={isParent} handleLogOut={handleLogOut} />
-      { !user && isLoading === false
+      { !user
       ? 
-      <LoginPage setUser = {setUser} setIsParent={setIsParent} setErrors={setErrors} errors = {errors}/>
+    <LoginPage 
+      setUser = {setUser} 
+      setIsParent={setIsParent} 
+      setErrors={setErrors} 
+      errors = {errors}
+      />
       :
       <>
       <Switch>
-        <Route path="/" exact component={() => <Home user={user} updateChore={updateChore} toggleUpdateChore={toggleUpdateChore} household={household} handleLogOut={handleLogOut}/>} /> 
+        <Route path="/" exact component={() => <Home user={user} refresh={refresh} setRefresh={setRefresh} household={household} handleLogOut={handleLogOut}/>} /> 
       </Switch>
       <Switch>
-        <Route path="/new-chore" exact component={() => <ChoreForm user={user} chores={chores} setChores={setChores} toggleUpdateChore={toggleUpdateChore} updateChore={updateChore}/>} />
+        <Route path="/new-chore" exact component={() => <ChoreForm user={user} refresh={refresh} setRefresh={setRefresh}/>} />
       </Switch>
       <Switch>
-        <Route path="/signup" exact component={() => <SignUp setUser = {setUser} setErrors = {setErrors}/>} />
+        <Route path="/signup" exact component={() => <NewMember 
+                                                        refresh={refresh} 
+                                                        setRefresh={setRefresh} 
+                                                        handleLogOut={handleLogOut} 
+                                                        user={user} setUser={setUser} 
+                                                        setIsParent={setIsParent}
+                                                        errors={errors}
+                                                        setErrors={setErrors}/>} />
       </Switch>
       </>
       }

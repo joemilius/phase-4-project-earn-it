@@ -8,6 +8,7 @@ const HouseholdChoresDiv = styled.div`
     display: grid;
     justify-items: center;
     justify-content: space-evenly;
+    align-items: center;
     grid-template-columns: repeat(auto-fill, 15rem) 20%; 
     grid-gap: 20px; 
 `
@@ -16,7 +17,7 @@ const StyledChoreForm = styled.form`
     justify-content: center;
 `
 
-function ChoreForm({user, setChores, chores, toggleUpdateChore, updateChore}){
+function ChoreForm({user, refresh, setRefresh}){
     const [choreErrors, setChoreErrors] = useState([])
     const [choreData, setChoreData] = useState({
         chore_name:"",
@@ -42,22 +43,11 @@ function ChoreForm({user, setChores, chores, toggleUpdateChore, updateChore}){
         })
         .then(response => {
             if (response.ok) {
-                response.json().then((chore) => setChores([...chores, chore]));
-                toggleUpdateChore(!updateChore)
+                response.json().then((chore) => setRefresh(!refresh));
             } else {
                 response.json().then((err) => setChoreErrors(err.errors));
             }
-        })
-    }
-
-    function handleDelete(e) {
-        const deletedChoreId = parseInt(e.target.id)
-        const choresWithoutDeletedChore = [...chores].filter((chore) => chore.id !== deletedChoreId)
-        fetch(`/chores/${deletedChoreId}`, {
-            method: "DELETE",
-        })
-        setChores(choresWithoutDeletedChore)
-        toggleUpdateChore(!updateChore)
+        })   
     }
     
     return (
@@ -95,9 +85,9 @@ function ChoreForm({user, setChores, chores, toggleUpdateChore, updateChore}){
                     return (
                         <HouseholdChore 
                             key = {household_chore.id}
-                            id = {household_chore.id}
                             chore = {household_chore}
-                            handleDelete = {handleDelete}
+                            refresh={refresh}
+                            setRefresh={setRefresh}
                         />
                     )
                 })}

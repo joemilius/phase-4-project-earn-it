@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Input = styled.input`
-    width: 300px;
+    width: 350px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -65,6 +65,7 @@ export const HomeSubtitle = styled.h2`
 export const UserInfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    flex-shrink: 2;
     align-items: center;
     padding-top: 1em;
     padding-bottom: 1em;
@@ -93,9 +94,12 @@ export const StyledButton = styled.button`
 
 export const FormWrapper = styled.form`
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-
-    
+    align-items: stretch;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 100%;
 `
 
 export const StyledSelect = styled.select`
@@ -104,17 +108,10 @@ export const StyledSelect = styled.select`
     padding: 0.5rem;
     margin-bottom: 1rem;
     text-align: center;
-    border-width: medium;
+    border-width: .3rem;
     border-color: black;
     border-radius: 10px;
-        option {
-            color: black;
-            background: white;
-        }
-`
-export const StyledOption = styled.option`
-    text-align: center;
-    background: #f2f2f2;
+    box-sizing: content-box;
 
 `
 
@@ -171,19 +168,26 @@ export const DelButton = styled.button`
         cursor: pointer;
     }
 `
-
-export const HouseholdChoreDiv = styled.div`
-    white-space: pre-line;
-    width: 100%;
-    padding: .5em;
-    margin: .25em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    border-style: solid;
-    border-color: black;
-    border-radius: 20px;
+export const ChildChoreDiv = styled.div`
     background: #256ce1;
     color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-radius: 15px;
+    padding: .5rem;
+`
+
+export const Wrapper2 = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const SignUpForm = styled.form`
+    display: grid;
+    justify-content: center;
 `
